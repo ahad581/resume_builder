@@ -8,12 +8,14 @@
   <title>{% block title %}Dashboard - DiamondTalent{% endblock %}</title>
 
   <!-- Favicons -->
-  <link href="{% static 'img/favicon.png' %}" rel="icon">
-  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link href="{% static 'img/resume_logo.png' %}" rel="icon">
+  <link href="{% static 'img/resume_logo.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -35,8 +37,8 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
       <a href="{% url 'dashboard' %}" class="logo d-flex align-items-center">
-        <img src="{% static 'img/logo1.png' %}" alt="">
-        <span class="d-none d-lg-block">Resume  Builder</span>
+        <img src="{% static 'img/resume_logo.png' %}" alt="">
+        <span class="d-none d-lg-block">Resume Builder</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
@@ -55,10 +57,16 @@
               <h6>{{ user.username }}</h6>
               <span>{{ user.email }}</span>
             </li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item d-flex align-items-center" href="{% url 'account_email' %}"><i class="bi bi-person"></i><span>My Account</span></a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item d-flex align-items-center" href="{% url 'account_logout' %}"><i class="bi bi-box-arrow-right"></i><span>Sign Out</span></a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item d-flex align-items-center" href="{% url 'account_email' %}"><i
+                  class="bi bi-person"></i><span>My Account</span></a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item d-flex align-items-center" href="{% url 'account_logout' %}"><i
+                  class="bi bi-box-arrow-right"></i><span>Sign Out</span></a></li>
           </ul>
         </li>
       </ul>
@@ -108,7 +116,8 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="{% static 'vendor/apexcharts/apexcharts.min.js' %}"></script>
@@ -122,4 +131,5 @@
   <script src="{% static 'js/main.js' %}"></script>
   {% block extra_scripts %}{% endblock %}
 </body>
+
 </html>
