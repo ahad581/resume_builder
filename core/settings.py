@@ -19,6 +19,7 @@ env = environ.Env(
 )
 
 
+env = environ.Env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +28,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Security settings
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
-ALLOWED_HOSTS = env('ALLOWED_HOSTS')
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["127.0.0.1", "localhost"])
 
 
 # Application definition
@@ -212,15 +213,27 @@ AUTHENTICATION_BACKENDS = [
 
 LOGIN_URL = '/web/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_EMAIL_REQUIRED = True
+
 ACCOUNT_FORMS = {
     'signup': 'accounts.forms.CustomSignupForm',
 }
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # or 'optional'
+ACCOUNT_AUTHENTICATION_METHOD = 'username'  # or 'username_email'
+ACCOUNT_USERNAME_REQUIRED = True  # if you don't want usernames
 
+LOGIN_REDIRECT_URL = '/'  # or your dashboard URL
 # Looking to send emails in production? Check out our Email API/SMTP product!
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = 'f0cb0b9d536e42'
-EMAIL_HOST_PASSWORD = '588663c1d79800'
-EMAIL_PORT = '2525'
+# EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+# EMAIL_HOST_USER = 'f0cb0b9d536e42'
+# EMAIL_HOST_PASSWORD = '588663c1d79800'
+# EMAIL_PORT = '2525'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = env('EMAIL_HOST', default='smtp.gmail.com')
+EMAIL_PORT = env('EMAIL_PORT', default=587)
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=True)
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='sadiqabad0328@gmail.com')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='dyta wvbk cqrk ijah')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)

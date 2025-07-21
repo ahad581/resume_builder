@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'account_base.html' %}
+{% block title %}
+Email Verification Sent
+{% endblock %}
+{% block content %}
+<div class="container">
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="pt-4 pb-2">
+                                <h5 class="card-title text-center pb-0 fs-4">Verification Email Sent</h5>
+                                <p class="text-center small">A verification email has been sent to your email address.
+                                    Please check your inbox and click the link to verify your account.</p>
+                                <p class="text-center small">If you do not see the email, please check your spam or junk
+                                    folder or <a href="{% url 'account_email' %}" class="btn btn-link">Resend
+                                        Confirmation Email</a>.</p>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <p class="small mb-0 text-center">
+                                    <a href="{% url 'account_login' %}">Go to Login</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
