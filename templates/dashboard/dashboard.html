@@ -1,8 +1,71 @@
 {% extends 'resume_base.html' %}
 {% block title %} Resume Builder - Dashboard {% endblock %}
 {% block content %}
-<div class="container">
-  <h1>Sample dashboard</h1>
-  <p>This is some sample content extending the base template.</p>
-</div>
+<div class="pagetitle">
+  <h1>Dashboard</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+      <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+  <div class="row">
+    <!-- Sales Card -->
+    <div class="col-xxl-4 col-md-6">
+      <div class="card info-card sales-card">
+        <div class="card-body">
+          <h5 class="card-title">Resumes <span>| This Month</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-file-earmark-text"></i>
+            </div>
+            <div class="ps-3">
+              <h6>145</h6>
+              <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Sales Card -->
+
+    <!-- Revenue Card -->
+    <div class="col-xxl-4 col-md-6">
+      <div class="card info-card revenue-card">
+        <div class="card-body">
+          <h5 class="card-title">Applications <span>| This Month</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-paperclip"></i>
+            </div>
+            <div class="ps-3">
+              <h6>312</h6>
+              <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Revenue Card -->
+
+    <!-- Customers Card -->
+    <div class="col-xxl-4 col-xl-12">
+      <div class="card info-card customers-card">
+        <div class="card-body">
+          <h5 class="card-title">Job Listings <span>| This Month</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-briefcase"></i>
+            </div>
+            <div class="ps-3">
+              <h6>27</h6>
+              <span class="text-danger small pt-1 fw-bold">-2%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Customers Card -->
+  </div>
+</section>
 {% endblock %}
