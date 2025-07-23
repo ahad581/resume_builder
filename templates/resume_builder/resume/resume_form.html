@@ -1,6 +1,6 @@
 {% extends 'account_base.html' %}
 {% block content %}
-<h2>Add Work Experience</h2>
+<h2>{% if form.instance.pk %}Edit Resume{% else %}Add Resume{% endif %}</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.non_field_errors }}
@@ -8,6 +8,6 @@
         {{ form.as_p }}
     </div>
     <button type="submit" class="btn btn-success">Save</button>
-    <a href="javascript:history.back()" class="btn btn-secondary">Cancel</a>
+    <a href="{% url 'resume_list' %}" class="btn btn-secondary">Cancel</a>
 </form>
 {% endblock %}

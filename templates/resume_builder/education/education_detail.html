@@ -1,0 +1,17 @@
+{% extends 'account_base.html' %}
+{% block content %}
+<h2>Education Detail</h2>
+<ul class="list-group">
+    <li class="list-group-item"><strong>Degree:</strong> {{ education.degree }}</li>
+    <li class="list-group-item"><strong>Institution:</strong> {{ education.institution }}</li>
+    <li class="list-group-item"><strong>Location:</strong> {{ education.location }}</li>
+    <li class="list-group-item"><strong>Start Date:</strong> {{ education.start_date }}</li>
+    <li class="list-group-item"><strong>End Date:</strong> {{ education.end_date }}</li>
+    <li class="list-group-item"><strong>GPA:</strong> {{ education.gpa }}</li>
+    <li class="list-group-item"><strong>Description:</strong> {{ education.description }}</li>
+    <li class="list-group-item"><strong>Visible:</strong> {{ education.is_visible }}</li>
+</ul>
+<a href="{% url 'education_update' education.pk %}" class="btn btn-warning mt-2">Edit</a>
+<a href="{% url 'education_delete' education.pk %}" class="btn btn-danger mt-2">Delete</a>
+<a href="{% url 'education_list' %}" class="btn btn-secondary mt-2">Back to List</a>
+{% endblock %}

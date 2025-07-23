@@ -1,0 +1,161 @@
+{% extends 'resume_base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Resume: {{ resume.title }}</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <p><strong>Summary:</strong> {{ resume.summary }}</p>
+                            <p><strong>Tags:</strong> {{ resume.tags }}</p>
+                            <p><strong>Template:</strong> {{ resume.template }}</p>
+                            <p><strong>Language:</strong> {{ resume.language }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Visibility:</strong> {{ resume.visibility }}</p>
+                            <p><strong>Created:</strong> {{ resume.created_at }}</p>
+                            <p><strong>Last Modified:</strong> {{ resume.last_modified }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>Education</span>
+                            <a href="{% url 'add_education' resume.pk %}" class="btn btn-sm btn-primary">Add</a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for edu in educations %}
+                            <li class="list-group-item">{{ edu.degree }} at {{ edu.institution }} ({{ edu.start_date }}
+                                - {{ edu.end_date }})</li>
+                            {% empty %}
+                            <li class="list-group-item text-muted">No education entries.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>Work Experience</span>
+                            <a href="{% url 'add_work_experience' resume.pk %}" class="btn btn-sm btn-primary">Add</a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for exp in work_experiences %}
+                            <li class="list-group-item">{{ exp.job_title }} at {{ exp.company }} ({{ exp.start_date }} -
+                                {{ exp.end_date|default:'Present' }})</li>
+                            {% empty %}
+                            <li class="list-group-item text-muted">No work experience entries.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>Technical Skills</span>
+                            <a href="{% url 'add_technical_skill' resume.pk %}" class="btn btn-sm btn-primary">Add</a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for skill in technical_skills %}
+                            <li class="list-group-item">{{ skill.technology }} ({{ skill.get_proficiency_display }})
+                            </li>
+                            {% empty %}
+                            <li class="list-group-item text-muted">No technical skills.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>Projects</span>
+                            <a href="{% url 'add_project' resume.pk %}" class="btn btn-sm btn-primary">Add</a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for project in projects %}
+                            <li class="list-group-item">{{ project.title }} ({{ project.role }})</li>
+                            {% empty %}
+                            <li class="list-group-item text-muted">No projects.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>Certifications</span>
+                            <a href="{% url 'add_certification' resume.pk %}" class="btn btn-sm btn-primary">Add</a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for cert in certifications %}
+                            <li class="list-group-item">{{ cert.name }} by {{ cert.issuer }} ({{ cert.issue_date }})
+                            </li>
+                            {% empty %}
+                            <li class="list-group-item text-muted">No certifications.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>Awards</span>
+                            <a href="{% url 'add_award' resume.pk %}" class="btn btn-sm btn-primary">Add</a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for award in awards %}
+                            <li class="list-group-item">{{ award.title }} by {{ award.issuer }} ({{ award.issue_date }})
+                            </li>
+                            {% empty %}
+                            <li class="list-group-item text-muted">No awards.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>Languages</span>
+                            <a href="{% url 'add_language' resume.pk %}" class="btn btn-sm btn-primary">Add</a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for lang in languages %}
+                            <li class="list-group-item">{{ lang.name }} ({{ lang.get_proficiency_display }})</li>
+                            {% empty %}
+                            <li class="list-group-item text-muted">No languages.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>Sections</span>
+                            <a href="{% url 'add_resume_section' resume.pk %}" class="btn btn-sm btn-primary">Add</a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for section in sections %}
+                            <li class="list-group-item">{{ section.title }} ({{ section.get_section_type_display }})
+                            </li>
+                            {% empty %}
+                            <li class="list-group-item text-muted">No custom sections.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <a href="{% url 'resume_list' %}" class="btn btn-secondary">Back to Resume List</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
