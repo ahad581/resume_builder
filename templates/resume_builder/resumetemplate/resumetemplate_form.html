@@ -1,0 +1,13 @@
+{% extends 'account_base.html' %}
+{% block content %}
+<h2>{% if form.instance.pk %}Edit Resume Template{% else %}Add Resume Template{% endif %}</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'resumetemplate_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

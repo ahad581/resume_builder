@@ -599,3 +599,24 @@ class EducationAddView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse('resume_detail', args=[self.resume.pk])
+
+class ResumePrintView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Resume
+    template_name = 'resume_builder/resumetemplate/resume_general_template.html'
+    context_object_name = 'resume'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        resume = self.object
+        context['educations'] = resume.educations.all()
+        context['work_experiences'] = resume.work_experiences.all()
+        context['technical_skills'] = resume.technical_skills.all()
+        context['projects'] = resume.projects.all()
+        context['certifications'] = resume.certifications.all()
+        context['awards'] = resume.awards.all()
+        context['languages'] = resume.languages.all()
+        context['sections'] = resume.sections.all()
+        return context
+
+    def test_func(self):
+        return self.get_object().user == self.request.user

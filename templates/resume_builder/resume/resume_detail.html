@@ -135,22 +135,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card h-100">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <span>Sections</span>
-                            <a href="{% url 'add_resume_section' resume.pk %}" class="btn btn-sm btn-primary">Add</a>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            {% for section in sections %}
-                            <li class="list-group-item">{{ section.title }} ({{ section.get_section_type_display }})
-                            </li>
-                            {% empty %}
-                            <li class="list-group-item text-muted">No custom sections.</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
             </div>
             <div class="mt-4">
                 <a href="{% url 'resume_list' %}" class="btn btn-secondary">Back to Resume List</a>

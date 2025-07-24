@@ -1,0 +1,33 @@
+{% extends 'account_base.html' %}
+{% block content %}
+<h2>Resume Templates</h2>
+<a href="{% url 'resumetemplate_create' %}" class="btn btn-primary mb-2">Add Template</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Format</th>
+            <th>Version</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for template in templates %}
+        <tr>
+            <td>{{ template.name }}</td>
+            <td>{{ template.get_format_type_display }}</td>
+            <td>{{ template.version }}</td>
+            <td>
+                <a href="{% url 'resumetemplate_detail' template.pk %}" class="btn btn-info btn-sm">View</a>
+                <a href="{% url 'resumetemplate_update' template.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'resumetemplate_delete' template.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No templates found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

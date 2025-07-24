@@ -4,13 +4,14 @@ from .views import (
     ResumeListView, ResumeDetailView,
     EducationAddView, WorkExperienceAddView, TechnicalSkillAddView, ProjectAddView,
     CertificationAddView, AwardAddView, LanguageAddView, ResumeSectionAddView,
-    ResumeCreateView, ResumeUpdateView, ResumeDeleteView
+    ResumeCreateView, ResumeUpdateView, ResumeDeleteView, ResumePrintView
 )
 
 urlpatterns = [
     path('resumes/', ResumeListView.as_view(), name='resume_list'),
     path('resumes/add/', ResumeCreateView.as_view(), name='resume_create'),
     path('resumes/<int:pk>/', ResumeDetailView.as_view(), name='resume_detail'),
+    path('resumes/<int:pk>/print', ResumePrintView.as_view(), name='resume_print'),
     path('resumes/<int:pk>/edit/', ResumeUpdateView.as_view(), name='resume_update'),
     path('resumes/<int:pk>/delete/', ResumeDeleteView.as_view(), name='resume_delete'),
     path('resumes/<int:pk>/add-education/', EducationAddView.as_view(), name='add_education'),

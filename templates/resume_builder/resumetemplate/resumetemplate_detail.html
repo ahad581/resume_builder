@@ -1,0 +1,16 @@
+{% extends 'account_base.html' %}
+{% block content %}
+<h2>Resume Template Detail</h2>
+<ul class="list-group">
+    <li class="list-group-item"><strong>Name:</strong> {{ template.name }}</li>
+    <li class="list-group-item"><strong>Description:</strong> {{ template.description }}</li>
+    <li class="list-group-item"><strong>Format:</strong> {{ template.get_format_type_display }}</li>
+    <li class="list-group-item"><strong>Version:</strong> {{ template.version }}</li>
+    <li class="list-group-item"><strong>Active:</strong> {{ template.is_active }}</li>
+    <li class="list-group-item"><strong>Created:</strong> {{ template.created_at }}</li>
+    <li class="list-group-item"><strong>Updated:</strong> {{ template.updated_at }}</li>
+</ul>
+<a href="{% url 'resumetemplate_update' template.pk %}" class="btn btn-warning mt-2">Edit</a>
+<a href="{% url 'resumetemplate_delete' template.pk %}" class="btn btn-danger mt-2">Delete</a>
+<a href="{% url 'resumetemplate_list' %}" class="btn btn-secondary mt-2">Back to List</a>
+{% endblock %}
